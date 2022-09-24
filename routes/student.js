@@ -14,9 +14,18 @@ router.post("/register",async(req,res)=>{
     }
 });
 
-router.get("/asxde",async(req,res)=>{
+router.get("/asxde/java",async(req,res)=>{
     try{
-        const allStudents=await Student.find({});
+        const allStudents=await Student.find({course:"java"});
+        res.status(200).send(allStudents);
+    }catch(err){
+        res.status(400).send(err);
+    }
+});
+
+router.get("/asxde/dsa",async(req,res)=>{
+    try{
+        const allStudents=await Student.find({course:"dsa"});
         res.status(200).send(allStudents);
     }catch(err){
         res.status(400).send(err);
